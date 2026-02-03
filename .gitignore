@@ -1,0 +1,29 @@
+# Binaries
+bin/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test outputs
+*.test
+*.out
+coverage.txt
+
+# Go workspace
+go.work
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+
+# Environment secrets — NEVER commit these
+.env
+.env.local
+*.key
+*.pem
+
+# OS files
+.DS_Store
+Thumbs.db
