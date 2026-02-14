@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package embed.v1;
+
+option go_package = "github.com/Ragnar-Engine/ragnar-system/api/proto/embed/v1;embedv1";
+
+import "api/proto/common/common.proto";
+
+service EmbedService {
+  rpc EmbedText(EmbedTextRequest) returns (EmbedTextResponse);
+  rpc GetModelInfo(GetModelInfoRequest) returns (ModelInfo);
+}
+
+message EmbedTextRequest {
+  string text = 1;
+  optional string model = 2;
+  optional common.RequestMetadata metadata = 3;
+}
+
+message EmbedTextResponse {
+  repeated float embedding = 1;
+  string model = 2;
+  int32 dimensions = 3;
+}
+
+message GetModelInfoRequest {
+  optional string model = 1;
+}
+
+message ModelInfo {
+  string model = 1;
+  int32 dimensions = 2;
+  int32 max_input_tokens = 3;
+}

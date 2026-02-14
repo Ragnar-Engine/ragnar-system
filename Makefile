@@ -27,4 +27,9 @@ docker-down: ## Stop all services
 	docker-compose down
 
 proto-gen: ## Generate Go code from proto files
-	protoc --go_out=. --go-grpc_out=. api/proto/*.proto
+	protoc --proto_path=. \
+		--go_out=. --go_opt=module=github.com/Ragnar-Engine/ragnar-system \
+		--go-grpc_out=. --go-grpc_opt=module=github.com/Ragnar-Engine/ragnar-system \
+		api/proto/common/common.proto api/proto/common/health.proto \
+		api/proto/embed/v1/embed.proto \
+		api/proto/ingest/v1/ingest.proto

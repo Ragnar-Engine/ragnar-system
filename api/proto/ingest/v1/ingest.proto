@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package ingest.v1;
+
+option go_package = "github.com/Ragnar-Engine/ragnar-system/api/proto/ingest/v1;ingestv1";
+
+import "api/proto/common/common.proto";
+
+service IngestService {
+  rpc IngestText(IngestTextRequest) returns (IngestTextResponse);
+}
+
+message IngestTextRequest {
+  string text = 1;
+  map<string, string> metadata = 2;
+  optional common.RequestMetadata request_metadata = 3;
+}
+
+message IngestTextResponse {
+  string document_id = 1;
+}

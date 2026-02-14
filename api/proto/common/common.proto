@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package common;
+
+option go_package = "github.com/Ragnar-Engine/ragnar-system/api/proto/common;common";
+
+message RequestMetadata {
+  string request_id = 1;
+  string user_id = 2;
+  int64 timestamp_ms = 3;
+  map<string, string> tags = 4;
+}
+
+message ErrorInfo {
+  string code = 1;
+  string message = 2;
+  repeated string details = 3;
+  int64 timestamp_ms = 4;
+}
+
+message PageRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message PageResponse {
+  string next_page_token = 1;
+  int32 total_count = 2;
+}
